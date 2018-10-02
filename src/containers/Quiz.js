@@ -80,7 +80,7 @@ export class Quiz extends Component {
     ) : (
       <View style={styles.container}>
         <Card title={info.category}>
-          <Text style={{ marginBottom: 10 }}>{info.question}</Text>
+          <Text style={{ marginBottom: 10, textAlign: 'center' }}>{_.unescape(info.question)}</Text>
           <Button
             backgroundColor="blue"
             buttonStyle={{
@@ -97,11 +97,11 @@ export class Quiz extends Component {
               borderRadius: 0,
               marginLeft: 0,
               marginRight: 0,
-              marginBottom: 0,
+              marginBottom: 20,
             }}
-            title="false"
+            title="False"
           />
-          <Text>{`${currentQuestionIndex + 1} of 10`}</Text>
+          <Text style={{ textAlign: 'center' }}>{`${currentQuestionIndex + 1} of 10`}</Text>
         </Card>
       </View>
     );
