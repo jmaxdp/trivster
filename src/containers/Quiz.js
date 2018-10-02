@@ -33,6 +33,7 @@ export class Quiz extends Component {
       currentQuestion: {},
       lastQuestion: false,
       isLoading: true,
+      currentQuestionIndex: 0,
     };
     this.loadNewQuestions = this.loadNewQuestions.bind(this);
   }
@@ -42,7 +43,6 @@ export class Quiz extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log('some update', prevProps);
     const { game: oldGameProps } = prevProps;
     const { game: newGameProps } = this.props;
     if (!_.isEqual(oldGameProps, newGameProps)) {
@@ -51,7 +51,6 @@ export class Quiz extends Component {
   }
 
   loadNewQuestions() {
-    console.log('called');
     const {
       game: { questions, currentQuestionIndex },
     } = this.props;
@@ -63,20 +62,25 @@ export class Quiz extends Component {
       currentQuestion,
       isLoading,
       lastQuestion,
+      currentQuestionIndex,
     });
   }
 
   render() {
-    const { isLoading, currentQuestion, lastQuestion } = this.state;
-
+    const {
+      isLoading, currentQuestion, lastQuestion, currentQuestionIndex,
+    } = this.state;
+    const info = currentQuestion
+      ? { category: currentQuestion.category, question: currentQuestion.question }
+      : { category: null, question: null };
     return isLoading ? (
       <View>
         <Text>Loading</Text>
       </View>
     ) : (
       <View style={styles.container}>
-        <Card title="Entertainment: Video Games">
-          <Text style={{ marginBottom: 10 }}>Unturned originally started as a Roblox game.</Text>
+        <Card title={info.category}>
+          <Text style={{ marginBottom: 10 }}>{info.question}</Text>
           <Button
             backgroundColor="blue"
             buttonStyle={{
@@ -97,7 +101,7 @@ export class Quiz extends Component {
             }}
             title="false"
           />
-          <Text>1 of 10</Text>
+          <Text>{`${currentQuestionIndex + 1} of 10`}</Text>
         </Card>
       </View>
     );
