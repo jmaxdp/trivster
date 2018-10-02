@@ -41,13 +41,15 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      loading: true,
-    };
+    this.state = {};
   }
 
+  static navigationOptions = {
+    title: 'Trivster!',
+    headerLeft: null,
+  };
+
   render() {
-    const { loading } = this.state;
     const {
       fetchQuestionsConnect,
       navigation: { navigate },
@@ -61,7 +63,6 @@ class Home extends Component {
         <Text style={styles.score}>Can you score 100%?</Text>
         <Button
           title="Begin"
-          loading
           loadingProps={{ size: 'large', color: 'rgba(111, 202, 186, 1)' }}
           titleStyle={{ fontWeight: '700' }}
           buttonStyle={{

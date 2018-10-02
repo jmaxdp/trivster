@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_QUESTIONS, SELECTED_ANSWER } from '../constants';
+import { FETCH_QUESTIONS, SELECTED_ANSWER, RESET_APP } from '../constants';
 
 export const fetchQuestions = () => async (dispatch) => {
   try {
@@ -19,4 +19,8 @@ export const fetchQuestions = () => async (dispatch) => {
 export const selectAnswer = questionWithAnswer => ({
   type: SELECTED_ANSWER,
   payload: questionWithAnswer,
+});
+
+export const resetApp = () => ({
+  type: RESET_APP,
 });

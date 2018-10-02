@@ -1,4 +1,4 @@
-import { FETCH_QUESTIONS, SELECTED_ANSWER } from '../constants';
+import { FETCH_QUESTIONS, SELECTED_ANSWER, RESET_APP } from '../constants';
 
 const initialState = {
   questions: [],
@@ -16,6 +16,8 @@ export default (state = initialState, action) => {
         answers: [...state.answers, action.payload],
         currentQuestionIndex: state.currentQuestionIndex + 1,
       };
+    case RESET_APP:
+      return { ...initialState };
     default:
       return state;
   }

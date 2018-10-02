@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, Text } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import _ from 'lodash';
+import Spinner from 'react-native-loading-spinner-overlay';
 import { selectAnswer } from '../actions/game';
 
 const styles = StyleSheet.create({
@@ -38,6 +39,11 @@ export class Quiz extends Component {
     this.loadNewQuestions = this.loadNewQuestions.bind(this);
   }
 
+  static navigationOptions = {
+    title: 'Quiz Time!',
+    headerLeft: null,
+  };
+
   componentDidMount() {
     this.loadNewQuestions();
   }
@@ -67,9 +73,7 @@ export class Quiz extends Component {
   }
 
   render() {
-    const {
-      isLoading, currentQuestion, lastQuestion, currentQuestionIndex,
-    } = this.state;
+    const { isLoading, currentQuestion, lastQuestion, currentQuestionIndex } = this.state;
     const {
       selectAnswerConnect,
       navigation: { navigate },
@@ -78,8 +82,8 @@ export class Quiz extends Component {
       ? { category: currentQuestion.category, question: currentQuestion.question }
       : { category: null, question: null };
     return isLoading ? (
-      <View>
-        <Text>Loading</Text>
+      <View style={styles.container}>
+        <Spinner visible={true} textContent={'Loading...'} textStyle={{ color: '#FFF' }} />
       </View>
     ) : (
       <View style={styles.container}>
