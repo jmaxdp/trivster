@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_QUESTIONS } from '../constants';
+import { FETCH_QUESTIONS, SELECTED_ANSWER } from '../constants';
 
 export const fetchQuestions = () => async (dispatch) => {
   try {
@@ -16,7 +16,7 @@ export const fetchQuestions = () => async (dispatch) => {
   }
 };
 
-export const selectAnswer = param => ({
-  type,
-  payload: param,
+export const selectAnswer = questionWithAnswer => ({
+  type: SELECTED_ANSWER,
+  payload: questionWithAnswer,
 });
