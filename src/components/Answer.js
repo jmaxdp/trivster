@@ -27,7 +27,9 @@ const Answer = (props) => {
   const {
     details: { selected_answer: selectedAnswer, correct_answer: correctAnswer, question },
   } = props;
+  // check if the answer is correct
   const correct = selectedAnswer === correctAnswer;
+  // choose which icon to render
   const icon = correct ? (
     <Icon name="check" color="green" style={styles.icon} />
   ) : (

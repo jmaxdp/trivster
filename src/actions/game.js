@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { FETCH_QUESTIONS, SELECTED_ANSWER, RESET_APP } from '../constants';
 
+// function to fetch data and save in redux state
 export const fetchQuestions = () => async (dispatch) => {
   try {
     const {
@@ -16,11 +17,13 @@ export const fetchQuestions = () => async (dispatch) => {
   }
 };
 
+// function to save question with answer in redux state
 export const selectAnswer = questionWithAnswer => ({
   type: SELECTED_ANSWER,
   payload: questionWithAnswer,
 });
 
+// function to reset the app
 export const resetApp = () => ({
   type: RESET_APP,
 });
