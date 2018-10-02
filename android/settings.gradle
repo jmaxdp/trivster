@@ -1,0 +1,3 @@
+rootProject.name = 'trivster'
+
+include ':app'
