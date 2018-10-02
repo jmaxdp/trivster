@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { StyleSheet, View, Text } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import _ from 'lodash';
@@ -123,6 +124,12 @@ export class Quiz extends Component {
     );
   }
 }
+
+Quiz.propTypes = {
+  selectAnswerConnect: PropTypes.func.isRequired,
+  navigation: PropTypes.objectOf(PropTypes.any).isRequired,
+  game: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 const mapStateToProps = state => ({
   game: state.game,

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   StyleSheet, Text, View, Button,
 } from 'react-native';
@@ -54,6 +55,11 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  fetchQuestionsConnect: PropTypes.func.isRequired,
+  navigation: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 const mapStateToProps = () => ({});
 
