@@ -75,7 +75,9 @@ class Home extends Component {
           }}
           containerStyle={{ marginTop: 20 }}
           onPress={() => {
+            // function that fetches questions
             fetchQuestionsConnect();
+            // navigate to quiz page
             navigate('Quiz');
           }}
         />

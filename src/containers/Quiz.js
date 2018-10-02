@@ -45,12 +45,14 @@ export class Quiz extends Component {
   };
 
   componentDidMount() {
+    // load all new questions
     this.loadNewQuestions();
   }
 
   componentDidUpdate(prevProps) {
     const { game: oldGameProps } = prevProps;
     const { game: newGameProps } = this.props;
+    // if props have been updated, replenish the componenet with new information
     if (!_.isEqual(oldGameProps, newGameProps)) {
       this.loadNewQuestions();
     }
@@ -60,9 +62,13 @@ export class Quiz extends Component {
     const {
       game: { questions, currentQuestionIndex },
     } = this.props;
+    // get total amount of questions
     const amountOfQuestions = questions.length;
+    // make sure questions have been loaded
     const isLoading = amountOfQuestions < 1;
+    // check if its the last question
     const lastQuestion = currentQuestionIndex === amountOfQuestions - 1;
+    // get the current question to show
     const currentQuestion = questions[currentQuestionIndex];
     this.setState({
       currentQuestion,
@@ -78,9 +84,12 @@ export class Quiz extends Component {
       selectAnswerConnect,
       navigation: { navigate },
     } = this.props;
+    // safety check in case of null or undefined
     const info = currentQuestion
       ? { category: currentQuestion.category, question: currentQuestion.question }
       : { category: null, question: null };
+
+    // if loading, show a loading spinner, else show the questions
     return isLoading ? (
       <View style={styles.container}>
         <Spinner visible={true} textContent={'Loading...'} textStyle={{ color: '#FFF' }} />
@@ -99,8 +108,10 @@ export class Quiz extends Component {
             }}
             title="True"
             onPress={() => {
+              // choose true and add it to the current question object
               selectAnswerConnect({ ...currentQuestion, selected_answer: 'True' });
               if (lastQuestion) {
+                // if its the last question, go to the results page
                 navigate('Results');
               }
             }}
@@ -115,8 +126,10 @@ export class Quiz extends Component {
             }}
             title="False"
             onPress={() => {
+              // choose false and add it to the current question object
               selectAnswerConnect({ ...currentQuestion, selected_answer: 'False' });
               if (lastQuestion) {
+                // if its the last question, go to the results page
                 navigate('Results');
               }
             }}

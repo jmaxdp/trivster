@@ -42,6 +42,7 @@ export class Results extends Component {
       resetAppConnect,
     } = this.props;
     let correctAnswersAmount = 0;
+    // count the total amount of correct answers
     answers.forEach(answer => {
       if (answer.correct_answer === answer.selected_answer) {
         correctAnswersAmount += 1;
@@ -73,8 +74,9 @@ export class Results extends Component {
           }}
           containerStyle={{ marginTop: 20 }}
           onPress={() => {
-            resetAppConnect();
+            // navigate to the home page and reset the app information
             navigate('Home');
+            resetAppConnect();
           }}
         />
       </View>
