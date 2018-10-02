@@ -10,11 +10,13 @@ import React, { Component } from 'react';
 import thunk from 'redux-thunk';
 import HomeView from './containers/Home';
 import QuizView from './containers/Quiz';
+import ResultsView from './containers/Results';
 import game from './reducers/game';
 
 const AppNavigator = createStackNavigator({
   Home: { screen: HomeView },
   Quiz: { screen: QuizView },
+  Results: { screen: ResultsView },
 });
 
 const navReducer = createNavigationReducer(AppNavigator);

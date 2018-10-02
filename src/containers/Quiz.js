@@ -70,7 +70,10 @@ export class Quiz extends Component {
     const {
       isLoading, currentQuestion, lastQuestion, currentQuestionIndex,
     } = this.state;
-    const { selectAnswerConnect } = this.props;
+    const {
+      selectAnswerConnect,
+      navigation: { navigate },
+    } = this.props;
     const info = currentQuestion
       ? { category: currentQuestion.category, question: currentQuestion.question }
       : { category: null, question: null };
@@ -93,6 +96,9 @@ export class Quiz extends Component {
             title="True"
             onPress={() => {
               selectAnswerConnect({ ...currentQuestion, selected_answer: 'True' });
+              if (lastQuestion) {
+                navigate('Results');
+              }
             }}
           />
           <Button
@@ -106,6 +112,9 @@ export class Quiz extends Component {
             title="False"
             onPress={() => {
               selectAnswerConnect({ ...currentQuestion, selected_answer: 'False' });
+              if (lastQuestion) {
+                navigate('Results');
+              }
             }}
           />
           <Text style={{ textAlign: 'center' }}>{`${currentQuestionIndex + 1} of 10`}</Text>
