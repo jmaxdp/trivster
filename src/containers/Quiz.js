@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { View, Text } from 'react-native';
 
 export class Quiz extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
-    return <View>This is the quiz page</View>;
+    return (
+      <View>
+        <Text>This is the quiz page</Text>
+      </View>
+    );
   }
 }
 

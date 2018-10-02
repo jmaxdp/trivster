@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+import {
+  StyleSheet, Text, View, Button,
+} from 'react-native';
+import { fetchQuestions } from '../actions/trivia';
 
 class Home extends Component {
   constructor(props) {
@@ -8,15 +11,26 @@ class Home extends Component {
 
     this.state = {};
   }
-  static navigationOptions = {
-    title: 'Trivster',
-  };
 
   render() {
+    const {
+      fetchQuestionsConnect,
+      navigation: { navigate },
+    } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to Trivster!</Text>
-        <Button title="Begin" onPress={() => this.props.navigation.navigate('Quiz')} />
+        <Text style={styles.welcome}>Welcome to the Trivia Challenge!</Text>
+        <Text style={styles.instructions}>
+          You Will Be Presented With 10 True or False Questions!
+        </Text>
+        <Text style={styles.instructions}>Can you score 100%?</Text>
+        <Button
+          title="Begin"
+          onPress={() => {
+            fetchQuestionsConnect();
+            navigate('Quiz');
+          }}
+        />
       </View>
     );
   }
@@ -26,13 +40,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5F5F5',
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    fontWeight: 'bold',
   },
   instructions: {
     textAlign: 'center',
@@ -43,7 +57,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { fetchQuestionsConnect: fetchQuestions };
 
 export default connect(
   mapStateToProps,

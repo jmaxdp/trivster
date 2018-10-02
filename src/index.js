@@ -9,10 +9,12 @@ import { Provider, connect } from 'react-redux';
 import React, { Component } from 'react';
 import thunk from 'redux-thunk';
 import HomeView from './containers/Home';
+import QuizView from './containers/Quiz';
 import trivia from './reducers/trivia';
 
 const AppNavigator = createStackNavigator({
   Home: { screen: HomeView },
+  Quiz: { screen: QuizView },
 });
 
 const navReducer = createNavigationReducer(AppNavigator);
@@ -32,6 +34,12 @@ const AppWithNavigationState = connect(mapStateToProps)(App);
 const store = createStore(appReducer, applyMiddleware(middleware, thunk));
 
 class Trivster extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
     return (
       <Provider store={store}>
