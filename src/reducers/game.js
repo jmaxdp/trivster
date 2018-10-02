@@ -11,7 +11,11 @@ export default (state = initialState, action) => {
     case FETCH_QUESTIONS:
       return { ...state, questions: action.payload };
     case SELECTED_ANSWER:
-      return { ...state, answers: [...state.answers, action.payload] };
+      return {
+        ...state,
+        answers: [...state.answers, action.payload],
+        currentQuestionIndex: state.currentQuestionIndex + 1,
+      };
     default:
       return state;
   }

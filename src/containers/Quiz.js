@@ -70,6 +70,7 @@ export class Quiz extends Component {
     const {
       isLoading, currentQuestion, lastQuestion, currentQuestionIndex,
     } = this.state;
+    const { selectAnswerConnect } = this.props;
     const info = currentQuestion
       ? { category: currentQuestion.category, question: currentQuestion.question }
       : { category: null, question: null };
@@ -90,6 +91,9 @@ export class Quiz extends Component {
               marginBottom: 20,
             }}
             title="True"
+            onPress={() => {
+              selectAnswerConnect({ ...currentQuestion, selected_answer: 'True' });
+            }}
           />
           <Button
             backgroundColor="red"
@@ -100,6 +104,9 @@ export class Quiz extends Component {
               marginBottom: 20,
             }}
             title="False"
+            onPress={() => {
+              selectAnswerConnect({ ...currentQuestion, selected_answer: 'False' });
+            }}
           />
           <Text style={{ textAlign: 'center' }}>{`${currentQuestionIndex + 1} of 10`}</Text>
         </Card>
