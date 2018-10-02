@@ -16,11 +16,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     maxWidth: 300,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
 });
 
 const Answer = (props) => {

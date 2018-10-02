@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
         answers: [...state.answers, action.payload],
         currentQuestionIndex: state.currentQuestionIndex + 1,
       };
-    // reset starte in the app
+    // reset state in the app
     case RESET_APP:
       return { ...initialState };
     default:

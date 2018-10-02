@@ -19,11 +19,6 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: 'bold',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
 });
 
 export class Quiz extends Component {
