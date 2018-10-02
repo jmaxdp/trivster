@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu',
-});
+class Home extends Component {
+  constructor(props) {
+    super(props);
 
-export default class Home extends Component {
+    this.state = {};
+  }
   static navigationOptions = {
-    title: 'Welcome',
+    title: 'Trivster',
   };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text style={styles.welcome}>Welcome to Trivster!</Text>
+        <Button title="Begin" onPress={() => this.props.navigation.navigate('Quiz')} />
       </View>
     );
   }
@@ -39,3 +40,12 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Home);

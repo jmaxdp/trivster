@@ -1,8 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
-import Home from './src/containers/Home';
+import HomeView from './src/containers/Home';
 
-const App = createStackNavigator({
-  Home: { screen: Home },
-});
+const App = createStackNavigator();
 
 export default App;
