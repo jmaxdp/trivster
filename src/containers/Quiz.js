@@ -10,9 +10,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#F5F5F5',
+    backgroundColor: 'yellow',
   },
-  box: {},
   welcome: {
     fontSize: 20,
     textAlign: 'center',

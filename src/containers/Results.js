@@ -11,7 +11,7 @@ export class Results extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
+  render() {
     const {
       game: { answers },
     } = this.props;
@@ -21,19 +21,12 @@ export class Results extends Component {
         correctAnswersAmount += 1;
       }
     });
-    this.setState({
-      correctAnswersAmount,
-      answers,
-    });
-  }
 
-  render() {
-    const { correctAnswersAmount, answers } = this.state;
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <Text>You Got</Text>
         <Text>{`${correctAnswersAmount} / 10`}</Text>
-        <ScrollView>
+        <ScrollView scrollEnabled>
           {answers.map(answer => (
             <Answer details={answer} />
           ))}
