@@ -3,6 +3,7 @@ import { FETCH_QUESTIONS, SELECTED_ANSWER } from '../constants';
 const initialState = {
   questions: [],
   answers: [],
+  currentQuestionIndex: 0,
 };
 
 export default (state = initialState, action) => {

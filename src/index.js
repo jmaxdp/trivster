@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import thunk from 'redux-thunk';
 import HomeView from './containers/Home';
 import QuizView from './containers/Quiz';
-import trivia from './reducers/trivia';
+import game from './reducers/game';
 
 const AppNavigator = createStackNavigator({
   Home: { screen: HomeView },
@@ -20,7 +20,7 @@ const AppNavigator = createStackNavigator({
 const navReducer = createNavigationReducer(AppNavigator);
 const appReducer = combineReducers({
   nav: navReducer,
-  trivia,
+  game,
 });
 
 const middleware = createReactNavigationReduxMiddleware('root', state => state.nav);

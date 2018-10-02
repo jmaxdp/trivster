@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import trivia from './trivia';
+import game from './game';
 
 export default function getRootReducer(navReducer) {
   return combineReducers({
     nav: navReducer,
-    trivia,
+    game,
   });
 }
